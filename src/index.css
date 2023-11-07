@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply m-0 p-0 box-border;
+}
+
+body {
+  width: 100vw;
+  max-height: 100vh;
+  /* background-color: #121721; */
+}
+
+@layer utilities {
+  /* .reset {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } */
+  .bg-image {
+    background-image: url("./src/assets/mobile/bg-pattern-header.svg");
+    background-size: 100%;
+    min-height: 136px;
+  }
+}
