@@ -19,7 +19,7 @@ body {
     box-sizing: border-box;
   } */
   .bg-image {
-    background-image: url("./src/assets/mobile/bg-pattern-header.svg");
+    background-image: url("./assets/mobile/bg-pattern-header.svg");
     background-size: 100%;
     min-height: 136px;
   }

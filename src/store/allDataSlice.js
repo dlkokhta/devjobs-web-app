@@ -4,14 +4,15 @@ const allDataSlice = createSlice({
   name: "allData", //state
   initialState: { data: [] }, //initialState
 
-  reducer: {
+  reducers: {
+    //ეს სეტავს
     setData: (state, action) => {
       state.data = action.payload;
     },
   },
 });
 
-export const dataActions = allDataSlice.actions;
+export const { setData } = allDataSlice.actions;
 export default allDataSlice.reducer;
 
 // const [allData, setAllData] = useState([]);
