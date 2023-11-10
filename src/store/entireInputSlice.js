@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const entireInputSlice = createSlice({
-  name: "entInput",
+  name: "entireInput",
   initialState: {
     text: "",
   },
+
   reducers: {
-    setEntInput: (state, action) => {
+    setEntireInput: (state, action) => {
       state.text = action.payload;
     },
   },
 });
 
-export const { setEntInput } = entireInputSlice.actions;
+export const { setEntireInput } = entireInputSlice.actions;
 export default entireInputSlice.reducer;
