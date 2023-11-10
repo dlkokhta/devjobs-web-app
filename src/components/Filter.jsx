@@ -3,7 +3,8 @@ import { setInput } from "../store/inputSlice";
 import { setEntireInput } from "../store/entireInputSlice";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { setFilter } from "../store/filterSlice";
+import { setFilteredCountry } from "../store/filteredCountrySlice";
+import { setFullTime } from "../store/fullTimeSlice";
 
 const Filter = () => {
   const changeMode = useSelector((store) => store.mode.Boolean);
@@ -11,38 +12,31 @@ const Filter = () => {
   const input = useSelector((store) => store.input.text);
   const entireInputDispatch = useDispatch();
   const [windows, setWindow] = useState(false);
-  const filterDispatch = useDispatch();
-  const allData = useSelector((store) => store.allData.data);
-  const [showCountryList, setShowCountryList] = useState(false);
-  const fullTimeDispatch = useDispatch();
-
-  let uniqueLocation = allData
-    .map((data) => data.location)
-    .filter((value, index, self) => self.indexOf(value) === index);
-
-  console.log(uniqueLocation);
+  const filteredCountryDispatch = useDispatch();
+  const dispatch = useDispatch();
+  const fullTime = useSelector((store) => store.fullTime.Boolean);
 
   const inputHandler = (event) => {
     inputDispatch(setInput(event.target.value));
   };
 
-  const clickChangehandler = () => {
+  const searchClickChangehandler = () => {
     entireInputDispatch(setEntireInput(input));
   };
 
   const filterClickHandler = () => {
     setWindow(!windows);
   };
-  const searchButtonClickHandler = () => {
-    console.log("button clicked");
-  };
 
   const locationInputChangeHandler = (event) => {
-    filterDispatch(setFilter(event.target.value));
+    filteredCountryDispatch(setFilteredCountry(event.target.value));
   };
 
-  const countryListHandler = () => {
-    setShowCountryList(!showCountryList);
+  const searchButtonClickHandler = () => {
+    setWindow(false);
+  };
+  const checkBoxClickHandler = () => {
+    dispatch(setFullTime(!fullTime));
   };
 
   return (
@@ -74,7 +68,7 @@ const Filter = () => {
           {/**search icon */}
           <div className="w-12 h-12 bg-[#5964E0] flex items-center justify-center rounded-md">
             <svg
-              onClick={clickChangehandler}
+              onClick={searchClickChangehandler}
               width="24"
               height="24"
               xmlns="http://www.w3.org/2000/svg"
@@ -91,16 +85,18 @@ const Filter = () => {
       {/**filter container */}
       {windows && (
         <div
-          onClick={() => {
-            setWindow(!windows);
-          }}
+          // onClick={() => {
+          //   setWindow(!windows);
+          // }}
           className="z-20 top-0 w-full h-full pt-[230px] fixed bg-[#181818] bg-opacity-70 "
         >
           <div
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className="absolute bg-[#19202D]  z-30 left-0 right-0 mx-6 rounded-md max-w-[400px]"
+            className={`absolute ${
+              changeMode ? "bg-[#19202D]" : "bg-[#ffffff] "
+            }   z-30 left-0 right-0 mx-6 rounded-md max-w-400px`}
           >
             <div className="flex py-7 pl-6 ">
               <div>
@@ -114,27 +110,11 @@ const Filter = () => {
               </div>
               {/**location input */}
               <input
-                onClick={countryListHandler}
                 onChange={locationInputChangeHandler}
                 className="text-white ml-4 bg-transparent  w-full font-Kumbh text-base font-normal outline-none"
                 placeholder="Filter by location..."
               />
             </div>
-            {/**unique country list */}
-            {!showCountryList && (
-              <div className="absolute text-[#ffffff] bg-[#19202D] w-full pt-6 pb-6 pl-6 ">
-                <ul>
-                  {allData
-                    .map((data) => data.location)
-                    .filter(
-                      (value, index, self) => self.indexOf(value) === index
-                    )
-                    .map((uniqueLocation, index) => (
-                      <li key={index}>{uniqueLocation}</li>
-                    ))}
-                </ul>
-              </div>
-            )}
             {/**line */}
             <div className="bg-[#6E8098] h-[1px]"></div>
 
@@ -142,8 +122,10 @@ const Filter = () => {
               {/**checkBox */}
               <div className="flex gap-3 mb-6">
                 <input
+                  onClick={checkBoxClickHandler}
                   style={{ width: "20px", height: "20px" }}
                   type="checkbox"
+                  checked={!fullTime}
                 />
 
                 <div className="text-white">Full Time Only</div>

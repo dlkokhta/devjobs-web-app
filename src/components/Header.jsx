@@ -6,7 +6,7 @@ const Header = () => {
   const changeMode = useSelector((store) => store.mode.Boolean);
   const allData = useSelector((store) => store.allData.data);
   const modeDispatch = useDispatch();
-  // console.log(changeMode);
+  console.log(changeMode);
   const modeChangeHandler = () => {
     modeDispatch(setMode(!changeMode));
   };

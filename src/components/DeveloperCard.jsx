@@ -5,12 +5,9 @@ const DeveloperCard = () => {
   const allData = useSelector((store) => store.allData.data);
   const changeMode = useSelector((store) => store.mode.Boolean);
   const entireInput = useSelector((store) => store.entireInput.text);
-  const filter = useSelector((store) => store.filter.text);
-
-  // const filteredData = allData.filter((data) =>
-  //   data.position.toLowerCase().includes(entireInput.toLowerCase())
-  // );
-  // console.log(filter);
+  const filteredCountry = useSelector((store) => store.filteredCountry.text);
+  const fullTime = useSelector((store) => store.fullTime.Boolean);
+  console.log(fullTime);
 
   return (
     <div className="grid gap-12 ">
@@ -18,9 +15,11 @@ const DeveloperCard = () => {
         .filter((data) =>
           data.position.toLowerCase().includes(entireInput.toLowerCase())
         )
-        // .filter((data) =>
-        //   data.location.toLowerCase().includes(filter.toLowerCase())
-        // )
+        .filter((data) =>
+          data.location.toLowerCase().includes(filteredCountry.toLowerCase())
+        )
+        .filter((data) => (fullTime ? fullTime : data.contract === "Full Time"))
+
         .map((data, index) => (
           <div
             key={index}

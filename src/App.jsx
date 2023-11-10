@@ -16,7 +16,11 @@ function App() {
   }, []);
 
   return (
-    <div className={` ${changeMode ? "bg-[#121721]" : "bg-[#f5f6f8]"} `}>
+    <div
+      className={` ${
+        changeMode ? "bg-[#121721]" : "bg-[#f5f6f8]"
+      }  min-h-screen`}
+    >
       <Header />
 
       <Filter />

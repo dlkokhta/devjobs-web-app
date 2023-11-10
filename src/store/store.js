@@ -3,7 +3,8 @@ import allDataSlice from "./allDataSlice";
 import modeSlice from "./modeSlice";
 import inputSlice from "./inputSlice";
 import entireInputSlice from "./entireInputSlice";
-import filterSlice from "./filterSlice";
+import filteredCountrySlice from "./filteredCountrySlice";
+import fullTimeSlice from "./fullTimeSlice";
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     mode: modeSlice,
     input: inputSlice,
     entireInput: entireInputSlice,
-    filter: filterSlice,
+    filteredCountry: filteredCountrySlice,
+    fullTime: fullTimeSlice,
   },
 });
 

@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const fullTimeSlice = createSlice({
   name: "fullTime",
   initialState: {
-    text: "",
+    Boolean: "false",
   },
   reducers: {
     setFullTime: (state, action) => {
-      state.text = action.payload;
+      state.Boolean = action.payload;
     },
   },
 });
