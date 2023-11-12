@@ -8,22 +8,26 @@ const DeveloperCard = () => {
   const entireInput = useSelector((store) => store.entireInput.text);
   const filteredCountry = useSelector((store) => store.filteredCountry.text);
   const fullTime = useSelector((store) => store.fullTime.Boolean);
+  const [showMoreCard, setShowMoreCard] = useState(12);
+
+  const loadMoreClickHandler = () => {
+    setShowMoreCard(showMoreCard + 3);
+  };
 
   return (
-    <Link to={"details"}>
-      <div className="grid gap-12 ">
-        {allData
-          .filter((data) =>
-            data.position.toLowerCase().includes(entireInput.toLowerCase())
-          )
-          .filter((data) =>
-            data.location.toLowerCase().includes(filteredCountry.toLowerCase())
-          )
-          .filter((data) =>
-            fullTime ? fullTime : data.contract === "Full Time"
-          )
+    <div className="grid gap-12 ">
+      {allData
+        .filter((data) =>
+          data.position.toLowerCase().includes(entireInput.toLowerCase())
+        )
+        .filter((data) =>
+          data.location.toLowerCase().includes(filteredCountry.toLowerCase())
+        )
+        .filter((data) => (fullTime ? fullTime : data.contract === "Full Time"))
+        .slice(0, showMoreCard)
 
-          .map((data, index) => (
+        .map((data, index) => (
+          <Link to={"details"}>
             <div
               key={index}
               className={`relative ${
@@ -57,9 +61,17 @@ const DeveloperCard = () => {
                 {data.location}
               </div>
             </div>
-          ))}
+          </Link>
+        ))}
+      <div className="flex justify-center pb-16">
+        <button
+          onClick={loadMoreClickHandler}
+          className="text-white bg-[#5964E0] py-4 px-8 rounded-md"
+        >
+          Load More
+        </button>
       </div>
-    </Link>
+    </div>
   );
 };
 
