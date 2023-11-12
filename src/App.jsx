@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { setData } from "./store/allDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from "./components/Filter";
+import { Routes, Route, Router } from "react-router-dom";
+import CardDetails from "./components/CardDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +17,13 @@ function App() {
     dispatch(setData(data));
   }, []);
 
+  const HomePage = () => (
+    <>
+      <Filter />
+      <DeveloperCard />
+    </>
+  );
+
   return (
     <div
       className={` ${
@@ -22,10 +31,10 @@ function App() {
       }  min-h-screen`}
     >
       <Header />
-
-      <Filter />
-
-      <DeveloperCard />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/details" element={<CardDetails />} />
+      </Routes>
     </div>
   );
 }
