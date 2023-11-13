@@ -7,6 +7,7 @@ import { setData } from "./store/allDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from "./components/Filter";
 import { Routes, Route, Router } from "react-router-dom";
+import CardDetails from "./components/CardDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,12 +27,13 @@ function App() {
   return (
     <div
       className={` ${
-        changeMode ? "bg-[#121721]" : "bg-[#f5f6f8]"
+        changeMode ? "bg-[#121721] duration-500 " : "bg-[#f5f6f8] duration-500 "
       }  min-h-screen`}
     >
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/details/:id" element={<CardDetails />} />
       </Routes>
     </div>
   );

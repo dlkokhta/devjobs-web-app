@@ -27,7 +27,7 @@ const DeveloperCard = () => {
         .slice(0, showMoreCard)
 
         .map((data, index) => (
-          <Link to={"details"}>
+          <Link to={"/details/" + data.id}>
             <div
               key={index}
               className={`relative ${
