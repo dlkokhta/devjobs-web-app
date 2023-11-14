@@ -128,7 +128,9 @@ const Filter = () => {
                   checked={!fullTime}
                 />
 
-                <div className="text-white">Full Time Only</div>
+                <div className={`${changeMode ? "text-white" : "text-black"}`}>
+                  Full Time Only
+                </div>
               </div>
               {/**button */}
               <div

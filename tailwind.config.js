@@ -11,10 +11,10 @@ export default {
       sm: "378px",
       // => @media (min-width: 640px) { ... }
 
-      md: "500px",
+      md: "540px",
       // => @media (min-width: 768px) { ... }
 
-      lg: "1024px",
+      lg: "765px",
       // => @media (min-width: 1024px) { ... }
 
       xl: "1440px",
