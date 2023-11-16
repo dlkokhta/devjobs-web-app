@@ -11,7 +11,7 @@ const Header = () => {
     modeDispatch(setMode(!changeMode));
   };
   return (
-    <div className=" bg-image pt-8 pr-6 pb-16 pl-6 flex justify-between items-center mb-24">
+    <div className=" bg-image lg:bg-image-tablet xl:bg-image-tablet-hidden xl:bg-image-desktop pt-8 pr-6 pb-16 pl-6 flex justify-between items-center mb-24 lg:px-[40px] xl:px-[165px] ">
       <div>
         <svg width="115" height="32" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -23,7 +23,7 @@ const Header = () => {
       </div>
       <div
         onClick={modeChangeHandler}
-        className="flex flex-row items-center gap-4"
+        className="flex flex-row items-center gap-4 "
       >
         <svg width="20" height="19" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -35,9 +35,9 @@ const Header = () => {
         <div
           className={`bg-white w-12 h-6 rounded-full flex items-center px-1 ${
             changeMode ? "justify-end" : ""
-          }`}
+          } `}
         >
-          <div className="bg-[#5964E0] rounded-full w-[14px] h-[14px]"></div>
+          <div className="bg-[#5964E0] rounded-full w-[14px] h-[14px] "></div>
         </div>
         <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
           <path

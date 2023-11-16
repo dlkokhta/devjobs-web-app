@@ -10,13 +10,17 @@ const DeveloperCard = () => {
   const fullTime = useSelector((store) => store.fullTime.Boolean);
   const [showMoreCard, setShowMoreCard] = useState(12);
 
+  console.log(fullTime);
+
+  console.log(entireInput);
+
   const loadMoreClickHandler = () => {
     setShowMoreCard(showMoreCard + 3);
   };
 
   return (
-    <div className="lg:px-10">
-      <div className="grid gap-12 md:grid-cols-2 md:gap-1 lg:gap-y-16 lg:gap-3 ">
+    <div className="px-6 lg:px-10 xl:px-[165px]">
+      <div className="grid gap-12 justify-center lg:gap-y-16 lg:gap-3 lg:grid-cols-2 xl:grid-cols-3 xl:gap-[30px] xl:gap-y-[65px]">
         {allData
           .filter((data) =>
             data.position.toLowerCase().includes(entireInput.toLowerCase())
@@ -34,8 +38,8 @@ const DeveloperCard = () => {
               <div
                 key={index}
                 className={`relative ${
-                  changeMode ? "bg-[#19202D]" : "bg-[#ffffff]"
-                } pt-14 pb-8 pl-8 mx-6 max-w-[500px] duration-500 rounded-md md:mx-0`}
+                  changeMode ? "bg-[#19202D]" : "bg-white"
+                } pt-[49px] pb-8 px-8 max-w-[500px] duration-500 rounded-md `}
               >
                 {/**logo */}
                 <div

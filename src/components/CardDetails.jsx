@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useParams } from "react-router-dom";
-
+import CardDetailsBar from "./CardDetailsBar";
+import CardDetailsFooter from "./CardDetailsFooter";
 const CardDetails = () => {
   const changeMode = useSelector((store) => store.mode.Boolean);
   const { id } = useParams();
@@ -10,19 +11,20 @@ const CardDetails = () => {
 
   console.log(allData.filter((data) => data.id === +id));
 
-  // absolute top-[120px]
   return (
     <div>
-      <div className=" mt-[-110px] left-0 right-0 text-center px-6 ">
+      <div className=" mt-[-110px] left-0 right-0 text-center px-6 lg:px-10 xl:px-[335px]  ">
+        <div className="hidden lg:block">{<CardDetailsBar />}</div>
         {allData
           .filter((data) => data.id === +id)
           .map((data) => (
             //card
+
             <div
               key={data.id}
               className={`relative rounded-md ${
                 changeMode ? "bg-[#19202D]" : "bg-[#ffffff]"
-              }  flex flex-col justify-center items-center mb-6`}
+              }  flex flex-col justify-center items-center mb-6 lg:hidden`}
             >
               {/**logo */}
               <div
@@ -62,9 +64,9 @@ const CardDetails = () => {
             <div
               className={` ${
                 changeMode ? "bg-[#19202D]" : "bg-[#ffffff]"
-              } rounded-md pt-10 px-6 flex flex-col`}
+              } rounded-md pt-10 px-6 flex flex-col lg:px-12`}
             >
-              <div>
+              <div className="lg:flex lg:flex-row lg:justify-between lg:items-center">
                 <div className=" font-Kumbh flex flex-col items-start mb-12 ">
                   {/**1 */}
                   <div className="flex text-[#6E8098] gap-4 mb-2 ">
@@ -76,7 +78,7 @@ const CardDetails = () => {
                   <div
                     className={`${
                       changeMode ? "text-[#ffffff]" : "text-[#19202D]"
-                    } mb-3 font-bold text-xl`}
+                    } mb-3 font-bold text-xl lg:text-[28px]`}
                   >
                     {data.position}
                   </div>
@@ -86,9 +88,9 @@ const CardDetails = () => {
                   </div>
                 </div>
                 {/**button */}
-                <button className="bg-[#5964E0] text-white py-4 px-[100px] rounded-md mb-8 ">
-                  apply now
-                </button>
+                <div className="bg-[#5964E0] text-white  py-4 px-[100px] rounded-md mb-8 lg:flex lg:h-[48px] lg:px-7 lg:items-center ">
+                  <button className="">Apply Now</button>
+                </div>
               </div>
 
               <div className="">
@@ -141,10 +143,11 @@ const CardDetails = () => {
             </div>
           ))}
       </div>
+      <CardDetailsFooter />
       <div
         className={`${
           changeMode ? "bg-[#19202D]" : "bg-[#ffffff]"
-        }  p-6 mt-16  w-full flex justify-center`}
+        }  p-6 mt-16  w-full flex justify-center lg:hidden`}
       >
         <button className="bg-[#5964E0] text-white py-4 px-[104px] rounded-md ">
           apply now

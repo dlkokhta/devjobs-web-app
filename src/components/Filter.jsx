@@ -40,7 +40,7 @@ const Filter = () => {
   };
 
   return (
-    <div>
+    <div className="lg:hidden">
       <div
         className={`${
           changeMode ? "bg-[#19202D]" : "bg-[#ffffff]"

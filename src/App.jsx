@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Filter from "./components/Filter";
 import { Routes, Route, Router } from "react-router-dom";
 import CardDetails from "./components/CardDetails";
+import FilterBar from "./components/FilterBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function App() {
 
   const HomePage = () => (
     <>
+      <FilterBar />
       <Filter />
       <DeveloperCard />
     </>

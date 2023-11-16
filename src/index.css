@@ -23,4 +23,15 @@ body {
     background-size: 100%;
     min-height: 136px;
   }
+
+  .bg-image-tablet {
+    background-image: url("../assets/tablet/bg-pattern-header.svg");
+    background-size: 100%;
+    min-height: 136px;
+  }
+  .bg-image-desktop {
+    background-image: url("../assets/desktop/bg-pattern-header.svg");
+    background-size: 100%;
+    min-height: 136px;
+  }
 }
